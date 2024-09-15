@@ -1,0 +1,147 @@
+from datetime import datetime
+from datetime import date
+action = 0
+num1 = 0
+num2 = 0
+operator = 0
+result = 0
+selected_slot = 1
+Read = "a"
+
+c = datetime.now()
+
+print('Welcome to CBOS (Console Based Operating System) Ver 0.2 beta. Try Help to start')
+
+print()
+
+while True:
+  action = input("What action ").title()
+  if action == 'Time':
+    print()
+    current_time = c.strftime('%H:%M:%S')
+    print('Current Time is:', current_time)
+    print()
+  if action == 'Date':
+    print()
+    today = date.today()
+    print('Current Date:', today)
+    print()
+  if action == 'Calc':
+    print()
+
+
+    def add(x, y):
+      return x + y
+
+
+    def subtract(x, y):
+      return x - y
+
+
+    def multiply(x, y):
+      return x * y
+
+
+    def divide(x, y):
+      return x / y
+
+    while True:
+      choice = input("Enter operator(+ - x /): ")
+
+      if choice in ('+', '-', 'x', '/'):
+        try:
+          print()
+          num1 = float(input("Enter first number: "))
+          print()
+          num2 = float(input("Enter second number: "))
+        except ValueError:
+          print()
+          print("Invalid input. Please enter a number.")
+          continue
+
+        if choice == '+':
+          print()
+          print(num1, "+", num2, "=", add(num1, num2))
+
+        elif choice == '-':
+          print()
+          print(num1, "-", num2, "=", subtract(num1, num2))
+
+        elif choice == 'x':
+          print()
+          print(num1, "*", num2, "=", multiply(num1, num2))
+
+        elif choice == '/':
+          print()
+          print(num1, "/", num2, "=", divide(num1, num2))
+
+        print()
+        next_calculation = input("New calculation? (y/n): ")
+        print()
+        if next_calculation == "n":
+          break
+      else:
+        print()
+        print("Invalid Input")
+  if action == 'Help':
+    print()
+    print("commands for CBOS")
+    print()
+    print("action      command")
+    print()
+    print("calculator = Calc")
+    print()
+    print("date = Date")
+    print()
+    print("time = Time")
+    print()
+    print("notepad = Text Editor")
+    print()
+  if action == 'Text Editor':
+    print()
+    selected_slot = int(input("what slot to select (1,2,3,4,5): "))
+    print()
+    Read = input("Read or write?: ").title()
+    print()
+    if Read == "Read":
+      if selected_slot == 1:
+        with open("slot1.txt", 'r') as file:
+          print(file.read())
+          print()
+      if selected_slot == 2:
+        with open("slot2.txt", 'r') as file:
+          print(file.read())
+          print()
+      if selected_slot == 3:
+        with open("slot3.txt", 'r') as file:
+          print(file.read())
+          print()
+      if selected_slot == 4:
+        with open("slot4.txt", 'r') as file:
+          print(file.read())
+          print()
+      if selected_slot == 5:
+        with open("slot5.txt", 'r') as file:
+          print(file.read())
+          print()
+    if Read == "Write":
+      if selected_slot == 1:
+        with open("slot1.txt", 'w') as file:
+          file.write(input("Enter your text here: "))
+          print()
+      if selected_slot == 2:
+        with open("slot2.txt", 'w') as file:
+          file.write(input("Enter your text here: "))
+          print()
+      if selected_slot == 3:
+        with open("slot3.txt", 'w') as file:
+          file.write(input("Enter your text here: "))
+          print()
+      if selected_slot == 4:
+        with open("slot4.txt", 'w') as file:
+          file.write(input("Enter your text here: "))
+          print()
+      if selected_slot == 5:
+        with open("slot5.txt", 'w') as file:
+          file.write(input("Enter your text here: "))
+          print()
