@@ -17,18 +17,31 @@ if name == 'nt':
 else:
     _ = system('clear')
 
+time.sleep(.15)
 print()
+time.sleep(.25)
 print("   __________  ____  _____    __             __  ____ __              _____       ______ ")
+time.sleep(.25)
 print("  / ____/ __ )/ __ \/ ___/   / /_  __  __   /  |/  (_) /_____  __  __/ ___/____  / __/ /_")
+time.sleep(.25)
 print(" / /   / __  / / / /\__ \   / __ \/ / / /  / /|_/ / / //_/ _ \/ / / /\__ \/ __ \/ /_/ __/")
+time.sleep(.25)
 print("/ /___/ /_/ / /_/ /___/ /  / /_/ / /_/ /  / /  / / / ,< /  __/ /_/ /___/ / /_/ / __/ /_  ")
+time.sleep(.25)
 print("\____/_____/\____//____/  /_.___/\__, /  /_/  /_/_/_/|_|\___/\__, //____/\____/_/  \__/  ")
+time.sleep(.25)
 print("                                /____/                      /____/                       ")
+time.sleep(.15)
 print()
+time.sleep(.25)
 print(" _       __     __                          __")
+time.sleep(.25)
 print("| |     / /__  / /________  ____ ___  ___  / /")
+time.sleep(.25)
 print("| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \/ / ")
+time.sleep(.25)
 print("| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/_/  ")
+time.sleep(.25)
 print("|__/|__/\___/_/\___/\____/_/ /_/ /_/\___(_)   ")
 print("                                              ")
 time.sleep(5)
@@ -43,7 +56,7 @@ print('Welcome to CBOS (Console Based Operating System) Ver 0.2 beta. Try Help t
 print()
 
 while True:
-  action = input("What action ").title()
+  action = input("What command?: ").title()
   if action == 'Time':
     print()
     current_time = datetime.now().strftime("%H:%M:%S")
@@ -125,7 +138,7 @@ while True:
     print()
     print("notepad = Text Editor")
     print()
-    print("Import app = Addcmd")
+    print("Import app = Add Command")
     print()
     print("Exit = quit")
     print()
@@ -183,10 +196,15 @@ while True:
     else:
       _ = system('clear')
     print("   ______                ____               __")
+    time.sleep(.25)
     print("  / ____/___  ____  ____/ / /_  __  _____  / /")
+    time.sleep(.25)
     print(" / / __/ __ \/ __ \/ __  / __ \/ / / / _ \/ / ")
+    time.sleep(.25)
     print("/ /_/ / /_/ / /_/ / /_/ / /_/ / /_/ /  __/_/  ")
+    time.sleep(.25)
     print("\____/\____/\____/\__,_/_.___/\__, /\___(_)   ")
+    time.sleep(.25)
     print("                             /____/           ")
     time.sleep(5)
     if name == 'nt':
@@ -194,7 +212,7 @@ while True:
     else:
       _ = system('clear')
     break
-  if action == "Addcmd":
+  if action == "Add Command":
       print()
       packagenamenopy = input("Input app name (without .py extention): ")
       packagename = packagenamenopy + ".py"
@@ -211,5 +229,5 @@ while True:
         file.write("    " + packagenamenopy + ".launch()\n")  # Write second line
 
       print("App added successfully!")
-      print("Please reboot to use the app")
+      print("Please reboot CBOS to use the app")
       print()
