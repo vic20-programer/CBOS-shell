@@ -1,6 +1,7 @@
 from datetime import datetime
 from datetime import date
 from os import system, name
+import os
 import time
 action = 0
 num1 = 0
@@ -231,3 +232,64 @@ while True:
       print("App added successfully!")
       print("Please reboot CBOS to use the app")
       print()
+
+  if action == "Files":
+    def list_directory(path):
+      print(f"\nDirectory: {path}")
+      try:
+        for item in os.listdir(path):
+          print("  -", item)
+      except PermissionError:
+        print("Permission denied.")
+      except FileNotFoundError:
+        print("Directory not found.")
+
+
+    def read_text_file(path):
+      try:
+        with open(path, 'r') as file:
+          print("\nFile Contents:\n")
+          print(file.read())
+      except Exception as e:
+        print("Error reading file:", e)
+
+
+    def rename_file(old_path, new_name):
+      new_path = os.path.join(os.path.dirname(old_path), new_name)
+      try:
+        os.rename(old_path, new_path)
+        print(f"Renamed to {new_path}")
+      except Exception as e:
+        print("Error renaming file:", e)
+
+
+    def file_browser():
+      current_path = input("Start at directory (e.g., C:\\ or /home): ").strip()
+      while True:
+        list_directory(current_path)
+        print("\n🔧 Options: cd [dir], open [file], rename [file], drive [letter], quit")
+        command = input("What next? ").strip().split(maxsplit=1)
+        if not command:
+          continue
+
+        action = command[0].lower()
+        arg = command[1] if len(command) > 1 else None
+
+        if action == "cd" and arg:
+          current_path = os.path.join(current_path, arg)
+        elif action == "open" and arg:
+          read_text_file(os.path.join(current_path, arg))
+        elif action == "rename" and arg:
+          old_file = os.path.join(current_path, arg)
+          new_name = input("New name: ").strip()
+          rename_file(old_file, new_name)
+        elif action == "drive" and arg:
+          current_path = f"{arg.upper()}:\\"
+        elif action == "quit":
+          print("Exiting browser.")
+          break
+        else:
+          print("❓ Unknown or incomplete command.")
+
+
+    file_browser()
