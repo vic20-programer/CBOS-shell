@@ -1,6 +1,9 @@
+import ctypes
+import sys
 from datetime import datetime
 from datetime import date
 from os import system, name
+from playsound import playsound
 import os
 import time
 action = 0
@@ -45,7 +48,7 @@ print("| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/_/  ")
 time.sleep(.25)
 print("|__/|__/\___/_/\___/\____/_/ /_/ /_/\___(_)   ")
 print("                                              ")
-time.sleep(5)
+playsound("startup.wav")
 
 if name == 'nt':
     _ = system('cls')
@@ -141,10 +144,20 @@ while True:
     print()
     print("Import app = Add Command")
     print()
+    print("File Explorer = Files")
+    print()
+    print("Grant Admin (needed for text editor and add command) = admin")
+    print()
     print("Exit = quit")
     print()
   if action == 'Text Editor':
     print()
+    if is_admin():
+      admin = 1
+    else:
+      print("This app needs admin privileges please run the command admin to use this app.")
+      print()
+      break
     selected_slot = int(input("what slot to select (1,2,3,4,5): "))
     print()
     Read = input("Read or write?: ").title()
@@ -215,6 +228,20 @@ while True:
     break
   if action == "Add Command":
       print()
+      def is_admin():
+        try:
+          return ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+          return False
+
+
+      if is_admin():
+        admin = 1
+      else:
+        print()
+        print("This app needs admin privileges please run the command admin to use this app.")
+        print()
+        break
       packagenamenopy = input("Input app name (without .py extention): ")
       packagename = packagenamenopy + ".py"
       print()
@@ -293,3 +320,21 @@ while True:
 
 
     file_browser()
+  if action == "Admin":
+    def is_admin():
+      try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+      except:
+        return False
+
+
+    if is_admin():
+      # Code to run with admin privileges
+      print()
+      print("Running as administrator")
+      print()
+    else:
+      # Re-run the script with admin privileges
+      ctypes.windll.shell32.ShellExecuteW(
+        None, "runas", sys.executable, __file__, None, 1)
+      break
