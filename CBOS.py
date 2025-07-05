@@ -3,7 +3,7 @@ import sys
 from datetime import datetime
 from datetime import date
 from os import system, name
-from playsound import playsound
+import playsound
 import os
 import time
 action = 0
@@ -48,7 +48,7 @@ print("| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/_/  ")
 time.sleep(.25)
 print("|__/|__/\___/_/\___/\____/_/ /_/ /_/\___(_)   ")
 print("                                              ")
-playsound("startup.wav")
+playsound.playsound(os.path.join(os.path.dirname(__file__), "startup.wav"))
 
 if name == 'nt':
     _ = system('cls')
