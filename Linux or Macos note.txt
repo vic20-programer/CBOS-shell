@@ -1,0 +1,1 @@
+You cannot use the setup.exe file so i added a preinstalled zip now.
